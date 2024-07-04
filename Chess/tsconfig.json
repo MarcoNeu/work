@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "downlevelIteration": true,
+      "emitDecoratorMetadata": true,
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "forceConsistentCasingInFileNames": true,
+      "lib": [
+        "ES2020",
+        // More or less required by graphql-request; otherwise typing error missing WebSocket
+        "dom"
+      ],
+      "module": "NodeNext",
+      "outDir": "build",
+      "strict": true,
+      "target": "es2020"
+    }
+  }

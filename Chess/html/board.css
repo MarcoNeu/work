@@ -1,0 +1,31 @@
+#board-space{
+    height: 640px;
+    width: 640px;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square{
+    height: 80px;
+    width: 80px;
+    background-color: rgb(255, 233, 200);
+}
+
+.brown {
+    background-color: #b69460;
+}
+
+.piece {
+    max-width: 60px;
+    max-height: 60px;
+    margin: auto;
+}
+
+.white {
+    fill: white;
+    stroke: black;
+    stroke-width: 20px;
+    stroke-linejoin: round;
+    paint-order: stroke;
+}
