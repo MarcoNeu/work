@@ -25,6 +25,7 @@ export function convertFen(fen) {
             }
         }
         else if (char == char.toUpperCase()) {
+            console.log("hello");
             board.push(figure.setColourWhite((Number(pieceMap.get(char.toLowerCase())))));
         }
         else if (char == char.toLowerCase()) {

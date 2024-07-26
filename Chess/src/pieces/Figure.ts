@@ -32,10 +32,10 @@ export class Figure{
         return (piece & this.colourMask)
     }
     setColourWhite(piece: number){
-        return piece | this.whiteMask
+        return (piece | this.whiteMask)
     }
     setColourBlack(piece: number){
-        return piece | this.blackMask
+        return (piece | this.blackMask)
     }
     
 

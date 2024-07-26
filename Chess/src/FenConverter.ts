@@ -27,6 +27,7 @@ export function convertFen(fen: string): number[] {
                     board.push(0)
                 }
             } else if(char == char.toUpperCase()){
+                console.log("hello")
                 board.push(figure.setColourWhite((Number(pieceMap.get(char.toLowerCase())))))
             } else if(char == char.toLowerCase()){
                 board.push(figure.setColourBlack((Number(pieceMap.get(char.toLowerCase())))))

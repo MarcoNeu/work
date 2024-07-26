@@ -53,10 +53,10 @@ export class Figure {
         return (piece & this.colourMask);
     }
     setColourWhite(piece) {
-        return piece | this.whiteMask;
+        return (piece | this.whiteMask);
     }
     setColourBlack(piece) {
-        return piece | this.blackMask;
+        return (piece | this.blackMask);
     }
 }
 //black pieces
