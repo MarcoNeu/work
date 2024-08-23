@@ -13,7 +13,6 @@ let pieceMap = new Map([
 ]);
 export function convertFen(fen) {
     let fenArr = fen.split(" ");
-    console.log(figure.setColourWhite(4));
     fenArr[0].split("").forEach(char => {
         if (char == "/") {
             file = 0;
@@ -25,7 +24,6 @@ export function convertFen(fen) {
             }
         }
         else if (char == char.toUpperCase()) {
-            console.log("hello");
             board.push(figure.setColourWhite((Number(pieceMap.get(char.toLowerCase())))));
         }
         else if (char == char.toLowerCase()) {

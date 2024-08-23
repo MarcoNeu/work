@@ -1,5 +1,5 @@
 import {convertFen, board} from "../src/FenConverter.js"
-import { Figure, pieces } from "../src/pieces/Figure.js";
+import { Figure, piecesW, piecesB } from "../src/pieces/Figure.js";
 import { toggleMove, showMoves, dragOver, dragDrop } from "../src/move.js";
 let domBoard = document.querySelector("#board-space");
 
@@ -47,27 +47,28 @@ initBoard()
 
 function setUpBoard(){
     let field: HTMLElement;
-    let piece: HTMLElement;
+    let pieces;
+    let pieceNr: number = 0;
+    let test: Array<Element>;
     for(let i=0;i<board.length;i++){
         if(board[i] != 0){
             if (board[i] <16){
                 field = <HTMLElement>document.getElementById(i.toString())
-                field.innerHTML= <string>pieces.get(figure.returnPiece(board[i]))
-                piece = <HTMLElement>document.getElementById(figure.returnPiece(board[i]))
-                piece.classList.add("white")
-                piece.setAttribute("draggable", "true")
-                piece.addEventListener("click", ()=>{showMoves()})
-            } else if (board[i] >16){
+                pieceNr += 1;
+                field.innerHTML= `<div piece_id="${pieceNr}" class="piece` + <string>piecesW.get(figure.returnPiece(board[i]))
+            }
+            if (board[i] >16){
                 field = <HTMLElement>document.getElementById(i.toString())
-                field.innerHTML= <string>pieces.get(figure.returnPiece(board[i]))
-                piece = <HTMLElement>document.getElementById(figure.returnPiece(board[i]))
-                console.log(piece)
-                piece.classList.add("black")
-                piece.setAttribute("draggable", "true")
-                piece.addEventListener("click", ()=>{showMoves()})
+                pieceNr += 1;
+                field.innerHTML= `<div piece_id="${pieceNr}" class="piece` + <string>piecesB.get(figure.returnPiece(board[i]))
             } 
         }
     }
+    pieces = document.getElementsByClassName("piece")
+    test = Array.from(pieces)
+    Array.from(pieces).forEach(piece => {
+        piece.setAttribute("draggable", "true")
+        piece.addEventListener("click", ()=>{showMoves(piece.id, piece.parentElement?.id!)}) })
 }
 
 convertFen(startPosition)

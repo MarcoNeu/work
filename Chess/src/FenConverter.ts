@@ -15,8 +15,6 @@ let pieceMap = new Map<string, number>([
 
 export function convertFen(fen: string): number[] {
         let fenArr: string [] = fen.split(" ")
-        
-        console.log(figure.setColourWhite(4))
 
         fenArr[0].split("").forEach(char=>{
             if(char == "/"){
@@ -27,7 +25,6 @@ export function convertFen(fen: string): number[] {
                     board.push(0)
                 }
             } else if(char == char.toUpperCase()){
-                console.log("hello")
                 board.push(figure.setColourWhite((Number(pieceMap.get(char.toLowerCase())))))
             } else if(char == char.toLowerCase()){
                 board.push(figure.setColourBlack((Number(pieceMap.get(char.toLowerCase())))))

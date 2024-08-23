@@ -1,5 +1,5 @@
 import { convertFen, board } from "../src/FenConverter.js";
-import { Figure, pieces } from "../src/pieces/Figure.js";
+import { Figure, piecesW, piecesB } from "../src/pieces/Figure.js";
 import { toggleMove, showMoves, dragOver } from "../src/move.js";
 let domBoard = document.querySelector("#board-space");
 let figure = new Figure();
@@ -43,28 +43,29 @@ function initBoard() {
 initBoard();
 function setUpBoard() {
     let field;
-    let piece;
+    let pieces;
+    let pieceNr = 0;
+    let test;
     for (let i = 0; i < board.length; i++) {
         if (board[i] != 0) {
             if (board[i] < 16) {
                 field = document.getElementById(i.toString());
-                field.innerHTML = pieces.get(figure.returnPiece(board[i]));
-                piece = document.getElementById(figure.returnPiece(board[i]));
-                piece.classList.add("white");
-                piece.setAttribute("draggable", "true");
-                piece.addEventListener("click", () => { showMoves(); });
+                pieceNr += 1;
+                field.innerHTML = `<div piece_id="${pieceNr}" class="piece` + piecesW.get(figure.returnPiece(board[i]));
             }
-            else if (board[i] > 16) {
+            if (board[i] > 16) {
                 field = document.getElementById(i.toString());
-                field.innerHTML = pieces.get(figure.returnPiece(board[i]));
-                piece = document.getElementById(figure.returnPiece(board[i]));
-                console.log(piece);
-                piece.classList.add("black");
-                piece.setAttribute("draggable", "true");
-                piece.addEventListener("click", () => { showMoves(); });
+                pieceNr += 1;
+                field.innerHTML = `<div piece_id="${pieceNr}" class="piece` + piecesB.get(figure.returnPiece(board[i]));
             }
         }
     }
+    pieces = document.getElementsByClassName("piece");
+    test = Array.from(pieces);
+    Array.from(pieces).forEach(piece => {
+        piece.setAttribute("draggable", "true");
+        piece.addEventListener("click", () => { showMoves(piece.id, piece.parentElement?.id); });
+    });
 }
 convertFen(startPosition);
 setUpBoard();

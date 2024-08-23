@@ -2,8 +2,34 @@ let startPosition
 let draggedElement
 
 
-export function showMoves(){
+export function showMoves(piece: string, squareId: string){
+    console.log(squareId)
+    switch(piece){
+
+        case "pawn": {
+            showPawnMoves(parseInt(squareId))
+        }
+        case "rook": {
+
+        }
+        case "queen": {
+
+        }
+        case "bishop": {
+
+        }
+        case "knight": {
+
+        }
+        case "king": {
+
+        }
+    }
     console.log("showing moves")
+}
+
+function calcMoves(){
+
 }
 
 export function toggleMove(event: Event){
@@ -19,4 +45,8 @@ export function dragOver(e: Event){
 export function dragDrop(e:Event){
     e. stopPropagation();
     console.log((<HTMLElement>e.target).parentNode)
+}
+
+function showPawnMoves(squareId: number){
+
 }
